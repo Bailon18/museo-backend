@@ -10,7 +10,6 @@ public class EstadoConservacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "Estado")
     private String estado;
 
     // Constructor

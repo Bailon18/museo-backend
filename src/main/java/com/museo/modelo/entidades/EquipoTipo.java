@@ -8,254 +8,221 @@ import jakarta.persistence.*;
 @Table(name = "EquipoTipo")
 public class EquipoTipo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Long id;
-    
-    @Column(name = "Modelo")
-    private String modelo;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "Serie")
-    private String serie;
+	private String modelo;
 
-    @ManyToOne
-    @JoinColumn(name = "UbicacionID")
-    private Ubicacion ubicacion;
+	private String serie;
 
-    @ManyToOne
-    @JoinColumn(name = "AmbienteID")
-    private Ambiente ambiente;
+	private String unidadMedida;
 
-    @ManyToOne
-    @JoinColumn(name = "NivelPisoID")
-    private NivelPiso nivelPiso;
+	private Double rangoMinimo;
 
-    @ManyToOne
-    @JoinColumn(name = "CategoriaID")
-    private Categoria categoria;
+	private Double rangoMaximo;
 
-    @ManyToOne
-    @JoinColumn(name = "ColeccionID")
-    private Coleccion coleccion;
+	private Date fechaCompra;
 
-    @ManyToOne
-    @JoinColumn(name = "EstadoID")
-    private EstadoEquipo estadoEquipo;
+	private Date fechaCalibracion;
 
-    @Column(name = "UnidadMedida")
-    private String unidadMedida;
+	private Date fechaRegistro;
 
-    @Column(name = "RangoMinimo")
-    private Double rangoMinimo;
+	private String tecnico;
 
-    @Column(name = "RangoMaximo")
-    private Double rangoMaximo;
+	private String correo;
 
-    @Column(name = "FechaCompra")
-    private Date fechaCompra;
+	private String descripcion;
 
-    @Column(name = "FechaCalibracion")
-    private Date fechaCalibracion;
+	private String observacion;
 
-    @Column(name = "FechaRegistro")
-    private Date fechaRegistro;
+	@ManyToOne
+	private Ubicacion ubicacion;
 
-    @Column(name = "Tecnico")
-    private String tecnico;
+	@ManyToOne
+	private Ambiente ambiente;
 
-    @Column(name = "Correo")
-    private String correo;
+	@ManyToOne
+	private NivelPiso nivelPiso;
 
-    @Column(name = "Descripcion")
-    private String descripcion;
+	@ManyToOne
+	private Categoria categoria;
 
-    @Column(name = "CodigoVitrina", nullable = false)
-    private String codigoVitrina;
+	@ManyToOne
+	private Coleccion coleccion;
 
-    @Column(name = "Observacion")
-    private String observacion;
+	@ManyToOne
+	private EstadoEquipo estadoEquipo;
 
-    @ManyToOne
-    @JoinColumn(name = "TipoEquipoID")
-    private TipoEquipo tipoEquipo;
-    
-    @OneToOne
-    @JoinColumn(name = "EquipoID")
-    private Equipo equipo;
+	@ManyToOne
+	private TipoEquipo tipoEquipo;
 
-    // Constructor
-    public EquipoTipo() {
-    }
+	@OneToOne
+	private Equipos equipos;
 
-    // Getters y setters
- 
-    public long getId() {
-        return id;
-    }
+	// Constructor
+	public EquipoTipo() {
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	// Getters y setters
 
+	public long getId() {
+		return id;
+	}
 
-    public String getModelo() {
-        return modelo;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
+	public String getModelo() {
+		return modelo;
+	}
 
-    public String getSerie() {
-        return serie;
-    }
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
 
-    public void setSerie(String serie) {
-        this.serie = serie;
-    }
+	public String getSerie() {
+		return serie;
+	}
 
-    public Ubicacion getUbicacion() {
-        return ubicacion;
-    }
+	public void setSerie(String serie) {
+		this.serie = serie;
+	}
 
-    public void setUbicacion(Ubicacion ubicacion) {
-        this.ubicacion = ubicacion;
-    }
+	public Ubicacion getUbicacion() {
+		return ubicacion;
+	}
 
-    public Ambiente getAmbiente() {
-        return ambiente;
-    }
+	public void setUbicacion(Ubicacion ubicacion) {
+		this.ubicacion = ubicacion;
+	}
 
-    public void setAmbiente(Ambiente ambiente) {
-        this.ambiente = ambiente;
-    }
+	public Ambiente getAmbiente() {
+		return ambiente;
+	}
 
-    public NivelPiso getNivelPiso() {
-        return nivelPiso;
-    }
+	public void setAmbiente(Ambiente ambiente) {
+		this.ambiente = ambiente;
+	}
 
-    public void setNivelPiso(NivelPiso nivelPiso) {
-        this.nivelPiso = nivelPiso;
-    }
+	public NivelPiso getNivelPiso() {
+		return nivelPiso;
+	}
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
+	public void setNivelPiso(NivelPiso nivelPiso) {
+		this.nivelPiso = nivelPiso;
+	}
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
+	public Categoria getCategoria() {
+		return categoria;
+	}
 
-    public Coleccion getColeccion() {
-        return coleccion;
-    }
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 
-    public void setColeccion(Coleccion coleccion) {
-        this.coleccion = coleccion;
-    }
+	public Coleccion getColeccion() {
+		return coleccion;
+	}
 
-    public EstadoEquipo getEstadoEquipo() {
-        return estadoEquipo;
-    }
+	public void setColeccion(Coleccion coleccion) {
+		this.coleccion = coleccion;
+	}
 
-    public void setEstadoEquipo(EstadoEquipo estadoEquipo) {
-        this.estadoEquipo = estadoEquipo;
-    }
+	public EstadoEquipo getEstadoEquipo() {
+		return estadoEquipo;
+	}
 
-    public String getUnidadMedida() {
-        return unidadMedida;
-    }
+	public void setEstadoEquipo(EstadoEquipo estadoEquipo) {
+		this.estadoEquipo = estadoEquipo;
+	}
 
-    public void setUnidadMedida(String unidadMedida) {
-        this.unidadMedida = unidadMedida;
-    }
+	public String getUnidadMedida() {
+		return unidadMedida;
+	}
 
-    public Double getRangoMinimo() {
-        return rangoMinimo;
-    }
+	public void setUnidadMedida(String unidadMedida) {
+		this.unidadMedida = unidadMedida;
+	}
 
-    public void setRangoMinimo(Double rangoMinimo) {
-        this.rangoMinimo = rangoMinimo;
-    }
+	public Double getRangoMinimo() {
+		return rangoMinimo;
+	}
 
-    public Double getRangoMaximo() {
-        return rangoMaximo;
-    }
+	public void setRangoMinimo(Double rangoMinimo) {
+		this.rangoMinimo = rangoMinimo;
+	}
 
-    public void setRangoMaximo(Double rangoMaximo) {
-        this.rangoMaximo = rangoMaximo;
-    }
+	public Double getRangoMaximo() {
+		return rangoMaximo;
+	}
 
-    public Date getFechaCompra() {
-        return fechaCompra;
-    }
+	public void setRangoMaximo(Double rangoMaximo) {
+		this.rangoMaximo = rangoMaximo;
+	}
 
-    public void setFechaCompra(Date fechaCompra) {
-        this.fechaCompra = fechaCompra;
-    }
+	public Date getFechaCompra() {
+		return fechaCompra;
+	}
 
-    public Date getFechaCalibracion() {
-        return fechaCalibracion;
-    }
+	public void setFechaCompra(Date fechaCompra) {
+		this.fechaCompra = fechaCompra;
+	}
 
-    public void setFechaCalibracion(Date fechaCalibracion) {
-        this.fechaCalibracion = fechaCalibracion;
-    }
+	public Date getFechaCalibracion() {
+		return fechaCalibracion;
+	}
 
-    public Date getFechaRegistro() {
-        return fechaRegistro;
-    }
+	public void setFechaCalibracion(Date fechaCalibracion) {
+		this.fechaCalibracion = fechaCalibracion;
+	}
 
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
 
-    public String getTecnico() {
-        return tecnico;
-    }
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
 
-    public void setTecnico(String tecnico) {
-        this.tecnico = tecnico;
-    }
+	public String getTecnico() {
+		return tecnico;
+	}
 
-    public String getCorreo() {
-        return correo;
-    }
+	public void setTecnico(String tecnico) {
+		this.tecnico = tecnico;
+	}
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+	public String getCorreo() {
+		return correo;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public String getCodigoVitrina() {
-        return codigoVitrina;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public void setCodigoVitrina(String codigoVitrina) {
-        this.codigoVitrina = codigoVitrina;
-    }
+	public String getObservacion() {
+		return observacion;
+	}
 
-    public String getObservacion() {
-        return observacion;
-    }
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
 
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
-    }
+	public TipoEquipo getTipoEquipo() {
+		return tipoEquipo;
+	}
 
-    public TipoEquipo getTipoEquipo() {
-        return tipoEquipo;
-    }
-
-    public void setTipoEquipo(TipoEquipo tipoEquipo) {
-        this.tipoEquipo = tipoEquipo;
-    }
+	public void setTipoEquipo(TipoEquipo tipoEquipo) {
+		this.tipoEquipo = tipoEquipo;
+	}
 }

@@ -10,7 +10,6 @@ public class Anomalia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "Descripcion")
     private String descripcion;
 
     // Constructor

@@ -10,7 +10,6 @@ public class Cultura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "Nombre")
     private String nombre;
 
     // Constructor

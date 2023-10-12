@@ -8,10 +8,10 @@ public class Gravedad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GravedadId")
-    private long gravedadId;
+    @Column(name = "id")
+    private long id;
 
-    @Column(name = "Descripcion", nullable = false)
+    
     private String descripcion;
 
     // Constructor
@@ -19,12 +19,12 @@ public class Gravedad {
     }
 
     // Getters y setters
-    public long getGravedadId() {
-        return gravedadId;
+    public long getId() {
+        return id;
     }
 
-    public void setGravedadId(long gravedadId) {
-        this.gravedadId = gravedadId;
+    public void setId(long gravedadId) {
+        this.id = gravedadId;
     }
 
     public String getDescripcion() {

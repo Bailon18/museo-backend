@@ -4,17 +4,16 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "meses")
-public class Mes {
+public class Meses {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "Nombre")
     private String nombre;
 
     // Constructor
-    public Mes() {
+    public Meses() {
     }
 
     // Getters y setters

@@ -8,10 +8,8 @@ public class Aprobacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AprobacionId")
-    private long aprobacionId;
+    private long id;
 
-    @Column(name = "Estado", nullable = false)
     private String estado;
 
     // Constructor
@@ -19,12 +17,12 @@ public class Aprobacion {
     }
 
     // Getters y setters
-    public long getAprobacionId() {
-        return aprobacionId;
+    public long getId() {
+        return id;
     }
 
-    public void setAprobacionId(long aprobacionId) {
-        this.aprobacionId = aprobacionId;
+    public void setId(long aprobacionId) {
+        this.id = aprobacionId;
     }
 
     public String getEstado() {

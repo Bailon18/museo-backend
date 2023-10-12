@@ -1,30 +1,22 @@
 package com.museo.modelo.entidades;
 
-import java.util.List;
-
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "equipos")
-public class Equipo {
+public class Equipos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "CodigoEquipo", nullable = false)
     private String codigoEquipo;
 	
-    @OneToMany(mappedBy = "equipo")
-    private List<EquipoTipo> equiposTipos;
-
-   
-	public Equipo() {
+	public Equipos() {
 
 	}
 
-	public Equipo(Long id, String codigoEquipo) {
+	public Equipos(Long id, String codigoEquipo) {
 		this.id = id;
 		this.codigoEquipo = codigoEquipo;
 	}
@@ -44,16 +36,4 @@ public class Equipo {
 	public void setCodigoEquipo(String codigoEquipo) {
 		this.codigoEquipo = codigoEquipo;
 	}
-
-	public List<EquipoTipo> getEquiposTipos() {
-		return equiposTipos;
-	}
-
-	public void setEquiposTipos(List<EquipoTipo> equiposTipos) {
-		this.equiposTipos = equiposTipos;
-	}
-	
-	
-    
-    
 }

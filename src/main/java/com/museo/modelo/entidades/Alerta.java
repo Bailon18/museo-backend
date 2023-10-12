@@ -11,7 +11,6 @@ public class Alerta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "TipoAlerta", nullable = false)
     private String tipoAlerta;
 
     // Constructor

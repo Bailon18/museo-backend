@@ -10,7 +10,6 @@ public class EstadoVitrina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "Estado", nullable = false)
     private String estado;
 
     // Constructor
