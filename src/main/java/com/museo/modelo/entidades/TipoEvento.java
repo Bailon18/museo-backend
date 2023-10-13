@@ -8,10 +8,8 @@ public class TipoEvento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TipoEventoId")
-    private long tipoEventoId;
+    private long id;
 
-    @Column(name = "Descripcion", nullable = false)
     private String descripcion;
 
     // Constructor
@@ -19,12 +17,12 @@ public class TipoEvento {
     }
 
     // Getters y setters
-    public long getTipoEventoId() {
-        return tipoEventoId;
+    public long getId() {
+        return id;
     }
 
-    public void setTipoEventoId(long tipoEventoId) {
-        this.tipoEventoId = tipoEventoId;
+    public void setId(long tipoEventoId) {
+        this.id = tipoEventoId;
     }
 
     public String getDescripcion() {

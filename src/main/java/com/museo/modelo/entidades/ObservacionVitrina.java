@@ -15,35 +15,27 @@ public class ObservacionVitrina {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "ObservacionVitrinaId")
     private String observacionVitrinaId;
 
     @ManyToOne
-    @JoinColumn(name = "VitrinaId")
     private Vitrinas vitrina;
 
     @ManyToOne
-    @JoinColumn(name = "AnomaliaId")
     private Anomalia anomalia;
 
     @ManyToOne
-    @JoinColumn(name = "TipoAnomaliaId")
     private TipoAnomalias tipoAnomalia;
 
     @ManyToOne
-    @JoinColumn(name = "GravedadId")
     private Gravedad gravedad;
 
     @ManyToOne
-    @JoinColumn(name = "ResultadoId")
     private Resultado resultado;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "FechaRegistro")
     private Date fechaRegistro;
 
     @ManyToOne
-    @JoinColumn(name = "observacionesId")
     private Observacion observacion;
 
     public ObservacionVitrina() {

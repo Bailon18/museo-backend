@@ -8,23 +8,21 @@ public class Resultado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ResultadoId")
-    private long resultadoId;
+    @Column(name = "id")
+    private long id;
 
     @Column(name = "Descripcion", nullable = false)
     private String descripcion;
 
-    // Constructor
     public Resultado() {
     }
 
-    // Getters y setters
-    public long getResultadoId() {
-        return resultadoId;
+    public long getId() {
+        return id;
     }
 
-    public void setResultadoId(long resultadoId) {
-        this.resultadoId = resultadoId;
+    public void setId(long resultadoId) {
+        this.id = resultadoId;
     }
 
     public String getDescripcion() {

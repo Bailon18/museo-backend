@@ -10,14 +10,11 @@ public class Pais {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "Nombre")
     private String nombre;
 
-    // Constructor
     public Pais() {
     }
 
-    // Getters y setters
     public long getId() {
         return id;
     }

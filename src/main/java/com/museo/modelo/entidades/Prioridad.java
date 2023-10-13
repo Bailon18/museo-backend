@@ -8,23 +8,21 @@ public class Prioridad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PrioridadId")
-    private long prioridadId;
+    @Column(name = "id")
+    private long id;
 
     @Column(name = "Descripcion", nullable = false)
     private String descripcion;
 
-    // Constructor
     public Prioridad() {
     }
 
-    // Getters y setters
-    public long getPrioridadId() {
-        return prioridadId;
+    public long getId() {
+        return id;
     }
 
-    public void setPrioridadId(long prioridadId) {
-        this.prioridadId = prioridadId;
+    public void setId(long prioridadId) {
+        this.id = prioridadId;
     }
 
     public String getDescripcion() {

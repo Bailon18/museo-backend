@@ -2,6 +2,8 @@ package com.museo.modelo.entidades;
 
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "condicionesAmbientales")
 public class CondicionesAmbientales {
 
     @Id

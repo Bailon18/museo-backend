@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 @Table(name = "bienespatrimoniales")
 public class BienesPatrimoniales {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -43,6 +44,10 @@ public class BienesPatrimoniales {
 
 	@ManyToOne
 	private Coleccion coleccion;
+	
+	@ManyToOne
+	private NivelPiso nivelpiso;
+
 
 	@ManyToOne
 	private EstadoConservacion estadoConservacion;
@@ -186,5 +191,15 @@ public class BienesPatrimoniales {
 	public void setEstadoConservacion(EstadoConservacion estadoConservacion) {
 		this.estadoConservacion = estadoConservacion;
 	}
+
+	public NivelPiso getNivelpiso() {
+		return nivelpiso;
+	}
+
+	public void setNivelpiso(NivelPiso nivelpiso) {
+		this.nivelpiso = nivelpiso;
+	}
+	
+	
 
 }

@@ -5,7 +5,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,23 +13,22 @@ public class TipoAnomalias {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private long id;
 
     private String Descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "AnomaliaId")
     private Anomalia anomalia;
 
 	public TipoAnomalias() {
 	}
 
 	public long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getDescripcion() {

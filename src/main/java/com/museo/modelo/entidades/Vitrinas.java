@@ -6,68 +6,54 @@ import java.util.Date;
 @Entity
 @Table(name = "vitrinas")
 public class Vitrinas {
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ID;
 
-    @Column(name = "CodigoVitrina")
-    private String codigoVitrina;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
-    @Column(name = "Responsable")
-    private String responsable;
+	private String codigoVitrina;
 
-    @Column(name = "Correo")
-    private String correo;
+	private String responsable;
 
-    @Column(name = "EstadoVitrina")
-    private String estadoVitrina;
+	private String correo;
 
-    @Column(name = "Largo")
-    private double largo;
+	private String estadoVitrina;
 
-    @Column(name = "Ancho")
-    private double ancho;
+	private double largo;
 
-    @Column(name = "Alto")
-    private double alto;
+	private double ancho;
 
-    @Column(name = "Descripcion")
-    private String descripcion;
+	private double alto;
 
-    @Column(name = "FechaRegistro")
-    private Date fechaRegistro;
+	private String descripcion;
 
-    @ManyToOne
-    @JoinColumn(name = "UbicacionID")
-    private Ubicacion ubicacion;
+	private Date fechaRegistro;
 
-    @ManyToOne
-    @JoinColumn(name = "AmbienteID")
-    private Ambiente ambiente;
+	@ManyToOne
+	private Ubicacion ubicacion;
 
-    @ManyToOne
-    @JoinColumn(name = "NivelPisoID")
-    private NivelPiso nivelPiso;
+	@ManyToOne
+	private Ambiente ambiente;
 
-    @ManyToOne
-    @JoinColumn(name = "EquipoID")
-    private Equipos equipo;
+	@ManyToOne
+	private NivelPiso nivelPiso;
 
-    @ManyToOne
-    @JoinColumn(name = "CodigoPatrimonialID")
-    private BienesPatrimoniales bienPatrimonial;
+	@ManyToOne
+	private Equipos equipo;
+
+	@ManyToOne
+	private BienesPatrimoniales bienPatrimonial;
 
 	public Vitrinas() {
 
 	}
 
-	public long getID() {
-		return ID;
+	public long getId() {
+		return id;
 	}
 
-	public void setID(long iD) {
-		ID = iD;
+	public void setId(long iD) {
+		this.id = iD;
 	}
 
 	public String getCodigoVitrina() {
@@ -181,6 +167,5 @@ public class Vitrinas {
 	public void setBienPatrimonial(BienesPatrimoniales bienPatrimonial) {
 		this.bienPatrimonial = bienPatrimonial;
 	}
-
 
 }
