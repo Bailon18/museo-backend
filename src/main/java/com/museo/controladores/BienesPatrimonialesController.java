@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/bienes-patrimoniales")
-@CrossOrigin(origins = "*")
 public class BienesPatrimonialesController {
 	
 	@Autowired
