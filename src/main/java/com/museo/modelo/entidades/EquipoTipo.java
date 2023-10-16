@@ -11,6 +11,8 @@ public class EquipoTipo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	private String codigoEquipoTipo;
 
 	private String modelo;
 
@@ -71,6 +73,27 @@ public class EquipoTipo {
 	}
 
 	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public String getCodigoEquipoTipo() {
+		return codigoEquipoTipo;
+	}
+
+	public void setCodigoEquipoTipo(String codigoEquipoTipo) {
+		this.codigoEquipoTipo = codigoEquipoTipo;
+	}
+
+	public Equipos getEquipos() {
+		return equipos;
+	}
+
+	public void setEquipos(Equipos equipos) {
+		this.equipos = equipos;
+	}
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 
