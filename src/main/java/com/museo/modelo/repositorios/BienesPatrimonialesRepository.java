@@ -22,4 +22,7 @@ public interface BienesPatrimonialesRepository extends JpaRepository<BienesPatri
 	                                                    @Param("nivelpiso") Long nivelpiso,
 	                                                    @Param("categoria") Long categoria);
 
+
+
+
 }
