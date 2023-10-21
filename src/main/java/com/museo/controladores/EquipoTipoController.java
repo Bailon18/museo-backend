@@ -60,6 +60,7 @@ public class EquipoTipoController {
         return equipoTipoService.actualizarEquipoTipo(id, equipoTipo);
     }
 
+    @Operation(summary = "Eliminar equipo")
     @DeleteMapping("/{id}")
     public void eliminarEquipoTipo(@PathVariable Long id) {
         equipoTipoService.eliminarEquipoTipo(id);
