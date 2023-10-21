@@ -15,7 +15,7 @@ import java.util.List;
 @CrossOrigin(origins = { "*" })
 public class BienesPatrimonialesController {
 	
-	@Autowired
+	@Autowired // paso algo
     private BienesPatrimonialesService bienesPatrimonialesService;
 
     
