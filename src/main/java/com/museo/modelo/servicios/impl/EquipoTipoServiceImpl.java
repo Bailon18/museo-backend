@@ -31,9 +31,9 @@ public class EquipoTipoServiceImpl implements EquipoTipoService {
         // Asumimos que 'tipo' es el tipo de equipo proporcionado (TEM, HUM, LUM)
         String tipo = "";
 
-        if ("Temperatura".equals(equipoTipo.getTipoEquipo().getId())) {
+        if (1 == equipoTipo.getTipoEquipo().getId()) {
             tipo = "TEM";
-        } else if ("Humedad".equals(equipoTipo.getTipoEquipo().getId())) {
+        } else if (2 == equipoTipo.getTipoEquipo().getId()) {
             tipo = "HUM";
         } else {
             tipo = "LUM";

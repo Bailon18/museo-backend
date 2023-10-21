@@ -59,7 +59,7 @@ public class EquipoTipo {
 	@ManyToOne
 	private TipoEquipo tipoEquipo;
 
-	@OneToOne
+	@ManyToOne
 	private Equipos equipos;
 
 	// Constructor
