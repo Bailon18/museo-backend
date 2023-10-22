@@ -36,7 +36,7 @@ public class EquipoTipoController {
     
 
  
-    @Operation(summary = "tiene que enviar 3 objectos de EquipoTipo")
+    @Operation(summary = "Tiene que enviar 3 objectos de EquipoTipo || Funciona para AGREGAR(Sin Id) O ACTUALIZAR( enviar con ID")
     @PostMapping("/")
     public List<EquipoTipo> crearEquiposTipos(
         @RequestBody List<EquipoTipo> equiposTipos // pero no se supone 
@@ -55,11 +55,12 @@ public class EquipoTipoController {
     }
 
 
-    @PutMapping("/{id}")
+    /*@PutMapping("/{id}")
     public EquipoTipo actualizarEquipoTipo(@PathVariable Long id, @RequestBody EquipoTipo equipoTipo) {
         return equipoTipoService.actualizarEquipoTipo(id, equipoTipo);
-    }
+    }*/
 
+    
     @Operation(summary = "Eliminar equipo")
     @DeleteMapping("/{id}")
     public void eliminarEquipoTipo(@PathVariable Long id) {

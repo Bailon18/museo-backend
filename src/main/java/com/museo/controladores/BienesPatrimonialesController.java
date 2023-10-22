@@ -41,12 +41,11 @@ public class BienesPatrimonialesController {
     public ResponseEntity<BienesPatrimoniales> crearBienesPatrimoniales(@RequestBody BienesPatrimoniales bienesPatrimoniales) {
 
         BienesPatrimoniales nuevoBienes = bienesPatrimonialesService.crearBienesPatrimoniales(bienesPatrimoniales);
-        BienesPatrimoniales bienes = bienesPatrimonialesService.obtenerPorId(nuevoBienes.getId());
-        if (bienes == null) {
+        if (nuevoBienes == null) {
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(bienes);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoBienes);
     }
     
     @GetMapping("/filtrar")

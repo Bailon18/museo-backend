@@ -2,6 +2,7 @@ package com.museo.modelo.entidades;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "vitrinas")
@@ -41,8 +42,8 @@ public class Vitrinas {
 	@ManyToOne
 	private Equipos equipo;
 
-	@ManyToOne
-	private BienesPatrimoniales bienPatrimonial;
+    @OneToMany
+    private List<BienesPatrimoniales> bienesPatrimoniales;
 
 	public Vitrinas() {
 
@@ -160,12 +161,13 @@ public class Vitrinas {
 		this.equipo = equipo;
 	}
 
-	public BienesPatrimoniales getBienPatrimonial() {
-		return bienPatrimonial;
+	public List<BienesPatrimoniales> getBienesPatrimoniales() {
+		return bienesPatrimoniales;
 	}
 
-	public void setBienPatrimonial(BienesPatrimoniales bienPatrimonial) {
-		this.bienPatrimonial = bienPatrimonial;
+	public void setBienesPatrimoniales(List<BienesPatrimoniales> bienesPatrimoniales) {
+		this.bienesPatrimoniales = bienesPatrimoniales;
 	}
+
 
 }

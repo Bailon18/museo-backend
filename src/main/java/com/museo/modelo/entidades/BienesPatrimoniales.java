@@ -33,23 +33,26 @@ public class BienesPatrimoniales {
 
 	private Date fechaRegistro;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Cultura cultura;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Ubicacion ubicacion;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Categoria categoria;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Coleccion coleccion;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private NivelPiso nivelpiso;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private EstadoConservacion estadoConservacion;
+	
+    @ManyToOne
+    private Vitrinas vitrina;
 	
 	public BienesPatrimoniales() {
 
@@ -198,6 +201,8 @@ public class BienesPatrimoniales {
 	public void setNivelpiso(NivelPiso nivelpiso) {
 		this.nivelpiso = nivelpiso;
 	}
+
+
 	
 	
 

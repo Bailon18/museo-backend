@@ -12,49 +12,34 @@ public class EquipoTipo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String codigoEquipoTipo;
+	private String codigoEquipoTipo;//
 
-	private String modelo;
+	private String modelo; //
 
-	private String serie;
+	private String serie; //
 
-	private String unidadMedida;
+	private String unidadMedida; //
 
-	private Double rangoMinimo;
+	private Double rangoMinimo; //
 
-	private Double rangoMaximo;
+	private Double rangoMaximo; //
 
-	private Date fechaCompra;
+	private Date fechaCompra; //
 
-	private Date fechaCalibracion;
+	private Date fechaCalibracion; //
 
-	private Date fechaRegistro;
 
-	private String tecnico;
+	private String tecnico; //
 
-	private String correo;
+	private String correo; //
 
-	private String descripcion;
-
-	private String observacion;
+	private String descripcion; //
 
 	@ManyToOne
-	private Ubicacion ubicacion;
+	private Ubicacion ubicacion; //
 
 	@ManyToOne
-	private Ambiente ambiente;
-
-	@ManyToOne
-	private NivelPiso nivelPiso;
-
-	@ManyToOne
-	private Categoria categoria;
-
-	@ManyToOne
-	private Coleccion coleccion;
-
-	@ManyToOne
-	private EstadoEquipo estadoEquipo;
+	private EstadoEquipo estadoEquipo; //
 
 	@ManyToOne
 	private TipoEquipo tipoEquipo;
@@ -121,37 +106,6 @@ public class EquipoTipo {
 		this.ubicacion = ubicacion;
 	}
 
-	public Ambiente getAmbiente() {
-		return ambiente;
-	}
-
-	public void setAmbiente(Ambiente ambiente) {
-		this.ambiente = ambiente;
-	}
-
-	public NivelPiso getNivelPiso() {
-		return nivelPiso;
-	}
-
-	public void setNivelPiso(NivelPiso nivelPiso) {
-		this.nivelPiso = nivelPiso;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	public Coleccion getColeccion() {
-		return coleccion;
-	}
-
-	public void setColeccion(Coleccion coleccion) {
-		this.coleccion = coleccion;
-	}
 
 	public EstadoEquipo getEstadoEquipo() {
 		return estadoEquipo;
@@ -201,13 +155,6 @@ public class EquipoTipo {
 		this.fechaCalibracion = fechaCalibracion;
 	}
 
-	public Date getFechaRegistro() {
-		return fechaRegistro;
-	}
-
-	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
-	}
 
 	public String getTecnico() {
 		return tecnico;
@@ -233,13 +180,6 @@ public class EquipoTipo {
 		this.descripcion = descripcion;
 	}
 
-	public String getObservacion() {
-		return observacion;
-	}
-
-	public void setObservacion(String observacion) {
-		this.observacion = observacion;
-	}
 
 	public TipoEquipo getTipoEquipo() {
 		return tipoEquipo;

@@ -11,14 +11,17 @@ public class Equipos {
     private Long id;
 
     private String codigoEquipo;
+    
+    private boolean estado ;
 	
 	public Equipos() {
-
+		this.estado = true;
 	}
 
 	public Equipos(Long id, String codigoEquipo) {
 		this.id = id;
 		this.codigoEquipo = codigoEquipo;
+		this.estado = true;
 	}
 
 	public Long getId() {
@@ -36,4 +39,14 @@ public class Equipos {
 	public void setCodigoEquipo(String codigoEquipo) {
 		this.codigoEquipo = codigoEquipo;
 	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+	
+	
 }

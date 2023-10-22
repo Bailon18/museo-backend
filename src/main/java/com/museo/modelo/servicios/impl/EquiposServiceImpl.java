@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class EquiposServiceImpl implements EquiposService {
@@ -40,8 +41,12 @@ public class EquiposServiceImpl implements EquiposService {
 
     @Override
     public void eliminarEquipo(Long id) {
-        equiposRepository.deleteById(id);
+        Optional<Equipos> optionalEquipo = equiposRepository.findById(id);
+        if (optionalEquipo.isPresent()) {
+            Equipos equipo = optionalEquipo.get();
+            equipo.setEstado(false); // Cambiar el estado a false
+            equiposRepository.save(equipo);
+        }
     }
-    
     
 }
