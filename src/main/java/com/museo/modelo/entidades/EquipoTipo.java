@@ -45,7 +45,7 @@ public class EquipoTipo {
 	private TipoEquipo tipoEquipo;
 
 	@ManyToOne
-	private Equipos equipos;
+	private Equipos equipos; // consulta por este 
 
 	// Constructor
 	public EquipoTipo() {

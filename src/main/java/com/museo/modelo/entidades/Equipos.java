@@ -1,5 +1,7 @@
 package com.museo.modelo.entidades;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +13,9 @@ public class Equipos {
     private Long id;
 
     private String codigoEquipo;
+    
+    @OneToMany(mappedBy = "equipos")
+    private List<EquipoTipo> equipoTipos;
     
     private boolean estado ;
 	

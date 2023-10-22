@@ -69,4 +69,9 @@ public class EquipoTipoServiceImpl implements EquipoTipoService {
     public void eliminarEquipoTipo(Long id) {
         equipoTipoRepository.deleteById(id);
     }
+    
+    @Override
+    public List<EquipoTipo> findEquipoTipoByEquiposId(Long equiposId) {
+        return equipoTipoRepository.findByEquiposId(equiposId);
+    }
 }
