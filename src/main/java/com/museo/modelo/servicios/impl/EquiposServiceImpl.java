@@ -1,9 +1,15 @@
 package com.museo.modelo.servicios.impl;
 
 import com.museo.modelo.entidades.Equipos;
+import com.museo.modelo.repositorios.EquipoTipoRepository;
 import com.museo.modelo.repositorios.EquiposRepository;
 import com.museo.modelo.servicios.EquiposService;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -15,6 +21,9 @@ public class EquiposServiceImpl implements EquiposService {
 
     @Autowired
     private EquiposRepository equiposRepository;
+    
+    @Autowired
+    private EquipoTipoRepository equipotipoRepository;
 
     @Override
     public List<Equipos> listarEquiposDescendente() {
@@ -40,12 +49,19 @@ public class EquiposServiceImpl implements EquiposService {
     }
 
     @Override
-    public void eliminarEquipo(Long id) {
-        Optional<Equipos> optionalEquipo = equiposRepository.findById(id);
-        if (optionalEquipo.isPresent()) {
-            Equipos equipo = optionalEquipo.get();
-            equipo.setEstado(false); // Cambiar el estado a false
-            equiposRepository.save(equipo);
+    @Transactional
+    public boolean eliminarEquipo(Long id) {
+
+        try {
+            equipotipoRepository.deleteByEquiposId(id);
+            equiposRepository.deleteById(id);
+            return true; // Retorna true cuando se elimina correctamente
+        } catch (EmptyResultDataAccessException ex) {
+            return false; // Retorna false cuando el recurso no se encuentra
+        } catch (DataIntegrityViolationException ex) {
+            throw ex; // Lanza la excepción cuando hay una restricción de clave externa
+        } catch (Exception ex) {
+            return false; // Retorna false en caso de otros errores
         }
     }
     

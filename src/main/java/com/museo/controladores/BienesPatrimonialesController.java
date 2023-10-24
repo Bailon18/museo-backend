@@ -1,9 +1,13 @@
 package com.museo.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+
 
 import com.museo.modelo.entidades.BienesPatrimoniales;
 import com.museo.modelo.servicios.BienesPatrimonialesService;
@@ -64,8 +68,19 @@ public class BienesPatrimonialesController {
 
     
     @DeleteMapping("/{id}")
-    public void eliminarBienesPatrimoniales(@PathVariable long id) {
-        bienesPatrimonialesService.eliminarBienesPatrimoniales(id);
+    public ResponseEntity<String> eliminarBienesPatrimoniales(@PathVariable long id) {
+        try {
+            boolean eliminado = bienesPatrimonialesService.eliminarBienesPatrimoniales(id);
+            if (eliminado) {
+                return new ResponseEntity<>("Eliminado exitosamente", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Recurso no encontrado", HttpStatus.NOT_FOUND);
+            }
+        } catch (DataIntegrityViolationException ex) {
+            return new ResponseEntity<>("Error: No se puede eliminar debido a una restricción de clave externa", HttpStatus.CONFLICT);
+        } catch (Exception ex) {
+            return new ResponseEntity<>("Error al eliminar el recurso", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/{id}")

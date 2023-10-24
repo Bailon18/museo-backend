@@ -1,6 +1,8 @@
 package com.museo.modelo.servicios.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import com.museo.modelo.entidades.BienesPatrimoniales;
 import com.museo.modelo.repositorios.BienesPatrimonialesRepository;
@@ -39,9 +41,19 @@ public class BienesPatrimonialesServiceImpl implements BienesPatrimonialesServic
     }
     
     @Override
-    public void eliminarBienesPatrimoniales(long id) {
-        bienesPatrimonialesRepository.deleteById(id);
+    public boolean eliminarBienesPatrimoniales(long id) {
+        try {
+            bienesPatrimonialesRepository.deleteById(id);
+            return true; // Retorna true cuando se elimina correctamente
+        } catch (EmptyResultDataAccessException ex) {
+            return false; // Retorna false cuando el recurso no se encuentra
+        } catch (DataIntegrityViolationException ex) {
+            throw ex; // Lanza la excepción cuando hay una restricción de clave externa
+        } catch (Exception ex) {
+            return false; // Retorna false en caso de otros errores
+        }
     }
+
     
     @Override
     public BienesPatrimoniales actualizarBienesPatrimoniales(long id, BienesPatrimoniales bienesPatrimoniales) {

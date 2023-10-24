@@ -11,4 +11,6 @@ public interface EquipoTipoRepository extends JpaRepository<EquipoTipo, Long> {
 	
     // Consulta para buscar EquipoTipo por el ID de un equipo
     List<EquipoTipo> findByEquiposId(Long equiposId);
+    
+    void deleteByEquiposId(Long id);
 }

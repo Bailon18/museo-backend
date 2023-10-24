@@ -9,6 +9,6 @@ public interface BienesPatrimonialesService {
     BienesPatrimoniales obtenerPorId(long id);
     BienesPatrimoniales crearBienesPatrimoniales(BienesPatrimoniales bienesPatrimoniales);
     List<BienesPatrimoniales> buscarBienesPorCondiciones(long ubicacion, long ambiente, long nivelpiso, long categoria);
-    void eliminarBienesPatrimoniales(long id);
+    boolean eliminarBienesPatrimoniales(long id);
     BienesPatrimoniales actualizarBienesPatrimoniales(long id, BienesPatrimoniales bienesPatrimoniales);
 }

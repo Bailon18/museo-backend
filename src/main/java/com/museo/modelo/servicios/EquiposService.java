@@ -11,6 +11,8 @@ public interface EquiposService {
 
     public Equipos obtenerEquipoPorId(Long id);
 
-    public void eliminarEquipo(Long id);
+    public boolean eliminarEquipo(Long id);
+    
+    
 
 }

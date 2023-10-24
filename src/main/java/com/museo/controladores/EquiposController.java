@@ -6,6 +6,8 @@ import com.museo.modelo.servicios.EquipoTipoService;
 import com.museo.modelo.servicios.EquiposService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,8 +42,20 @@ public class EquiposController {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarEquipo(@PathVariable Long id) {
-        equiposService.eliminarEquipo(id);
+    public ResponseEntity<String> eliminarEquipo(@PathVariable Long id) {
+
+        try {
+            boolean eliminado = equiposService.eliminarEquipo(id);
+            if (eliminado) {
+                return new ResponseEntity<>("Eliminado exitosamente", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Recurso no encontrado", HttpStatus.NOT_FOUND);
+            }
+        } catch (DataIntegrityViolationException ex) {
+            return new ResponseEntity<>("Error: No se puede eliminar debido a una restricción de clave externa", HttpStatus.CONFLICT);
+        } catch (Exception ex) {
+            return new ResponseEntity<>("Error al eliminar el recurso", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     
     @GetMapping("/equipotipo/{equipoId}")
