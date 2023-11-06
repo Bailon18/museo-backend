@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 
 import java.util.Date;
 
@@ -20,8 +21,6 @@ public class ObservacionBienPatrimonial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
-    private String observacionBienPatrimonialId;
-
     @ManyToOne
     private BienesPatrimoniales bienPatrimonial;
 
@@ -40,11 +39,13 @@ public class ObservacionBienPatrimonial {
     @ManyToOne
     private Aprobacion aprobacion;
 
-    //@Temporal(TemporalType.DATE)
     private Date fechaRegistro;
 
     @ManyToOne
     private Observacion observacion;
+    
+    @Lob
+    private String observaciondetalle;
 
     public ObservacionBienPatrimonial() {
     }
@@ -55,14 +56,6 @@ public class ObservacionBienPatrimonial {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getObservacionBienPatrimonialId() {
-		return observacionBienPatrimonialId;
-	}
-
-	public void setObservacionBienPatrimonialId(String observacionBienPatrimonialId) {
-		this.observacionBienPatrimonialId = observacionBienPatrimonialId;
 	}
 
 	public BienesPatrimoniales getBienPatrimonial() {

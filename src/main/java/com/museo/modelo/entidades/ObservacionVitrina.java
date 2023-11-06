@@ -15,8 +15,6 @@ public class ObservacionVitrina {
     @Column(name = "id")
     private long id;
 
-    private String observacionVitrinaId;
-
     @ManyToOne
     private Vitrinas vitrina;
 
@@ -37,6 +35,9 @@ public class ObservacionVitrina {
 
     @ManyToOne
     private Observacion observacion;
+   
+    @Lob
+    private String observaciondetalle;
 
     public ObservacionVitrina() {
     }
@@ -47,14 +48,6 @@ public class ObservacionVitrina {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getObservacionVitrinaId() {
-		return observacionVitrinaId;
-	}
-
-	public void setObservacionVitrinaId(String observacionVitrinaId) {
-		this.observacionVitrinaId = observacionVitrinaId;
 	}
 
 	public Vitrinas getVitrina() {
@@ -112,6 +105,16 @@ public class ObservacionVitrina {
 	public void setObservacion(Observacion observacion) {
 		this.observacion = observacion;
 	}
+
+	public String getObservaciondetalle() {
+		return observaciondetalle;
+	}
+
+	public void setObservaciondetalle(String observaciondetalle) {
+		this.observaciondetalle = observaciondetalle;
+	}
+	
+	
 
     
 }

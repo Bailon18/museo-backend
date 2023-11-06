@@ -1,4 +1,4 @@
-package com.museo.modelo.servicios.impl;
+ package com.museo.modelo.servicios.impl;
 
 
 import com.museo.modelo.entidades.EquipoTipo;
