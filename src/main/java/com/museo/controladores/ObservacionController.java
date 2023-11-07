@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.museo.modelo.entidades.EquipoTipo;
 import com.museo.modelo.entidades.Observacion;
 import com.museo.modelo.entidades.ObservacionBienPatrimonial;
 import com.museo.modelo.entidades.ObservacionVitrina;
@@ -14,6 +13,7 @@ import com.museo.modelo.servicios.ObservacionService;
 import com.museo.modelo.servicios.ObservacionVitrinaService;
 import com.museo.util.CrearObservacionRequest;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -38,12 +38,14 @@ public class ObservacionController {
 	    Observacion observacion = observacionService.guardarObservacion(ob);
 	    
 	    ObservacionVitrina  observacionVitrina =  request.getObservacionVitrina();
+	    observacionVitrina.setFechaRegistro(new Date());
 	    observacionVitrina.setObservacion(observacion);
 	    
 	    observacionvitrinaService.guardarObservacionVitrina(observacionVitrina);
 
 	    for (ObservacionBienPatrimonial observacionesBP : request.getListaObservacionBienPatrimonial()) {
 	    	observacionesBP.setObservacion(observacion);
+	    	observacionesBP.setFechaRegistro(new Date());
 	        observacionBienPatrimonialService.guardarObservacionBienPatrimonial(observacionesBP);	        
 	    }
 
@@ -51,8 +53,6 @@ public class ObservacionController {
 	}
 
     
-    
-
     @GetMapping("/{id}")
     public ResponseEntity<Observacion> obtenerObservacionPorId(@PathVariable Long id) {
         Observacion observacion = observacionService.obtenerObservacionPorId(id);
@@ -63,19 +63,13 @@ public class ObservacionController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<List<Observacion>> obtenerTodasLasObservaciones() {
-        List<Observacion> observaciones = observacionService.obtenerTodasLasObservaciones();
-        return new ResponseEntity<>(observaciones, HttpStatus.OK);
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarObservacion(@PathVariable Long id) {
         observacionService.eliminarObservacion(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     
-    @GetMapping("/report")
+    @GetMapping
     public ResponseEntity<List<Object[]>> getObservationReport() {
         List<Object[]> report = observacionService.getObservationReport();
         return ResponseEntity.ok(report);
