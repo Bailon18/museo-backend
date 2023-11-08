@@ -38,6 +38,11 @@ public class ObservacionVitrinaServiceImpl implements ObservacionVitrinaService 
         }
         return null;
     }
+
+	@Override
+	public ObservacionVitrina buscarObservacionVitrinaxObservacion(Long id) {
+		return observacionVitrinaRepository.listadoOvitrinaxObservacion(id);
+	}
     
 
 }

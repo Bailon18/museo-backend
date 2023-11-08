@@ -10,6 +10,8 @@ import java.util.Date;
 
 
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.persistence.ManyToOne;
 
 
@@ -39,6 +41,7 @@ public class ObservacionBienPatrimonial {
     @ManyToOne
     private Aprobacion aprobacion;
 
+    @Temporal(TemporalType.DATE)
     private Date fechaRegistro;
 
     @ManyToOne

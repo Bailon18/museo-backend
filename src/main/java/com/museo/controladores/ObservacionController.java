@@ -12,6 +12,7 @@ import com.museo.modelo.servicios.ObservacionBienPatrimonialService;
 import com.museo.modelo.servicios.ObservacionService;
 import com.museo.modelo.servicios.ObservacionVitrinaService;
 import com.museo.util.CrearObservacionRequest;
+import com.museo.util.ObservacionDetalleDTO;
 
 import java.util.Date;
 import java.util.List;
@@ -54,8 +55,8 @@ public class ObservacionController {
 
     
     @GetMapping("/{id}")
-    public ResponseEntity<Observacion> obtenerObservacionPorId(@PathVariable Long id) {
-        Observacion observacion = observacionService.obtenerObservacionPorId(id);
+    public ResponseEntity<ObservacionDetalleDTO> obtenerObservacionPorId(@PathVariable Long id) {
+    	ObservacionDetalleDTO observacion = observacionService.obtenerObservacionPorId(id);
         if (observacion != null) {
             return new ResponseEntity<>(observacion, HttpStatus.OK);
         } else {
@@ -63,6 +64,7 @@ public class ObservacionController {
         }
     }
 
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarObservacion(@PathVariable Long id) {
         observacionService.eliminarObservacion(id);

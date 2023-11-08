@@ -25,6 +25,11 @@ public class ObservacionBienPatrimonialServiceImpl implements ObservacionBienPat
     public List<ObservacionBienPatrimonial> listarObservacionesBienPatrimonial() {
         return observacionBienPatrimonialRepository.findAll();
     }
+    
+    @Override
+    public List<ObservacionBienPatrimonial> buscarObservacionBPxObservacion(Long id) {
+        return observacionBienPatrimonialRepository.listadoOBPxObservacion(id);
+    }
 
     @Override
     public ObservacionBienPatrimonial actualizarObservacionBienPatrimonial(long id, ObservacionBienPatrimonial observacionBienPatrimonial) {

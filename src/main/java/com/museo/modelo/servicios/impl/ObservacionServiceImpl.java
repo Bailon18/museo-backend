@@ -5,8 +5,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.museo.modelo.entidades.Observacion;
+import com.museo.modelo.entidades.ObservacionBienPatrimonial;
+import com.museo.modelo.entidades.ObservacionVitrina;
+import com.museo.modelo.repositorios.ObservacionBienPatrimonialRepository;
 import com.museo.modelo.repositorios.ObservacionRepository;
+import com.museo.modelo.repositorios.ObservacionVitrinaRepository;
 import com.museo.modelo.servicios.ObservacionService;
+import com.museo.util.ObservacionDetalleDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +22,12 @@ public class ObservacionServiceImpl implements ObservacionService {
 	
 	@Autowired
 	private ObservacionRepository observacionRepository;
+	
+	@Autowired
+	private ObservacionBienPatrimonialRepository observacionBienPatrimonialRepository;
+	
+	@Autowired
+	private ObservacionVitrinaRepository observacionVitrinaRepository;
 
 
     @Override
@@ -28,8 +39,12 @@ public class ObservacionServiceImpl implements ObservacionService {
     }
 
     @Override
-    public Observacion obtenerObservacionPorId(long id) {
-        return observacionRepository.findById(id).orElse(null);
+    public ObservacionDetalleDTO obtenerObservacionPorId(long id) {
+    	
+    	List<ObservacionBienPatrimonial> listaObservacionBP = observacionBienPatrimonialRepository.listadoOBPxObservacion(id);
+    	ObservacionVitrina observacionVitrina = observacionVitrinaRepository.listadoOvitrinaxObservacion(id);
+    	
+        return new ObservacionDetalleDTO(listaObservacionBP, observacionVitrina) ;
     }
 
     @Override

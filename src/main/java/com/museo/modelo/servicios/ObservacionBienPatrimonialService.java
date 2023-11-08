@@ -9,4 +9,5 @@ public interface ObservacionBienPatrimonialService {
     List<ObservacionBienPatrimonial> listarObservacionesBienPatrimonial();
     ObservacionBienPatrimonial actualizarObservacionBienPatrimonial(long id, ObservacionBienPatrimonial observacionBienPatrimonial);
     void eliminarObservacionBienPatrimonial(long id);
+    List<ObservacionBienPatrimonial> buscarObservacionBPxObservacion(Long id);
 }

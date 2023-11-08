@@ -8,4 +8,5 @@ public interface ObservacionVitrinaService {
     ObservacionVitrina guardarObservacionVitrina(ObservacionVitrina observacionVitrina);
     List<ObservacionVitrina> listarObservacionesVitrina();
     ObservacionVitrina actualizarObservacionVitrina(long id, ObservacionVitrina observacionVitrina);
+    ObservacionVitrina buscarObservacionVitrinaxObservacion(Long id);
 }
