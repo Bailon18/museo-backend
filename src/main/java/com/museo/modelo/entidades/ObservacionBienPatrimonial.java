@@ -124,6 +124,14 @@ public class ObservacionBienPatrimonial {
 	public void setObservacion(Observacion observacion) {
 		this.observacion = observacion;
 	}
+
+	public String getObservaciondetalle() {
+		return observaciondetalle;
+	}
+
+	public void setObservaciondetalle(String observaciondetalle) {
+		this.observaciondetalle = observaciondetalle;
+	}
     
     
 

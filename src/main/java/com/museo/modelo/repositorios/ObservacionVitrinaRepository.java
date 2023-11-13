@@ -1,8 +1,9 @@
 package com.museo.modelo.repositorios;
 
+import com.museo.modelo.entidades.Observacion;
 import com.museo.modelo.entidades.ObservacionVitrina;
 
-import java.util.List;
+import jakarta.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +17,7 @@ public interface ObservacionVitrinaRepository extends JpaRepository<ObservacionV
             "WHERE observacion_id = :idObservacion",
             nativeQuery = true)
 	ObservacionVitrina listadoOvitrinaxObservacion(@Param("idObservacion") Long idObservacion);
+	
+    @Transactional
+    void deleteByObservacion(Observacion observacion);
 }

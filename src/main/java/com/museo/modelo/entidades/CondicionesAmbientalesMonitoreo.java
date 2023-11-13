@@ -3,7 +3,10 @@ package com.museo.modelo.entidades;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.security.Timestamp;
 import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Table;
 import jakarta.persistence.ManyToOne;
@@ -15,7 +18,10 @@ public class CondicionesAmbientalesMonitoreo {
 	@Id
 	private Long id;
 
-	private Date fechaRegistro;
+	private String codigo_condicion;
+
+	@CreationTimestamp
+	private Timestamp fechaRegistro;
 
 	private double temperatura;
 
@@ -32,9 +38,6 @@ public class CondicionesAmbientalesMonitoreo {
 	@ManyToOne
 	private Vitrinas vitrina;
 
-	@ManyToOne
-	private CondicionesAmbientales condicionesAmbientales;
-
 	public CondicionesAmbientalesMonitoreo() {
 
 	}
@@ -47,11 +50,19 @@ public class CondicionesAmbientalesMonitoreo {
 		this.id = id;
 	}
 
-	public Date getFechaRegistro() {
+	public String getCodigo_condicion() {
+		return codigo_condicion;
+	}
+
+	public void setCodigo_condicion(String codigo_condicion) {
+		this.codigo_condicion = codigo_condicion;
+	}
+
+	public Timestamp getFechaRegistro() {
 		return fechaRegistro;
 	}
 
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 
@@ -109,14 +120,6 @@ public class CondicionesAmbientalesMonitoreo {
 
 	public void setVitrina(Vitrinas vitrina) {
 		this.vitrina = vitrina;
-	}
-
-	public CondicionesAmbientales getCondicionesAmbientales() {
-		return condicionesAmbientales;
-	}
-
-	public void setCondicionesAmbientales(CondicionesAmbientales condicionesAmbientales) {
-		this.condicionesAmbientales = condicionesAmbientales;
 	}
 
 }

@@ -64,7 +64,6 @@ public class ObservacionController {
         }
     }
 
-    
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarObservacion(@PathVariable Long id) {
         observacionService.eliminarObservacion(id);

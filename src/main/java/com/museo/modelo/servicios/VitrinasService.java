@@ -3,6 +3,7 @@ package com.museo.modelo.servicios;
 import java.util.List;
 
 import com.museo.modelo.entidades.Vitrinas;
+import com.museo.util.VitrinaDTO;
 
 public interface VitrinasService {
 	
@@ -10,4 +11,5 @@ public interface VitrinasService {
     Vitrinas obtenerVitrinaPorId(Long id);
     Vitrinas guardarVitrina(Vitrinas vitrina);
     void eliminarVitrina(Long id);
+    VitrinaDTO obtenerDatosPorCodigoVitrina(String codigoVitrina);
 }

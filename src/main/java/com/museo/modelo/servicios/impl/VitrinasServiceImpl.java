@@ -6,7 +6,11 @@ import org.springframework.stereotype.Service;
 import com.museo.modelo.entidades.Vitrinas;
 import com.museo.modelo.repositorios.VitrinasRepository;
 import com.museo.modelo.servicios.VitrinasService;
+import com.museo.util.EquipoTipoDTO;
+import com.museo.util.VitrinaDTO;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,4 +45,38 @@ public class VitrinasServiceImpl implements VitrinasService {
     public void eliminarVitrina(Long id) {
         vitrinasRepository.deleteById(id);
     }
+
+    public VitrinaDTO obtenerDatosPorCodigoVitrina(String codigoVitrina) {
+        List<Object[]> resultados = vitrinasRepository.findDataByCodigoVitrina(codigoVitrina);
+
+        VitrinaDTO vitrinaDTO = null;
+
+        for (Object[] resultado : resultados) {
+            if (vitrinaDTO == null) {
+                vitrinaDTO = new VitrinaDTO();
+                vitrinaDTO.setCodigoVitrina((String) resultado[0]);
+                vitrinaDTO.setAmbiente((String) resultado[1]);
+                vitrinaDTO.setNivelpiso((String) resultado[2]);
+                vitrinaDTO.setEstadoVitrina((String) resultado[3]);
+
+                List<EquipoTipoDTO> equipoTipos = new ArrayList<>();
+                EquipoTipoDTO equipoTipoDTO = new EquipoTipoDTO();
+                equipoTipoDTO.setCodigo_equipo_tipo((String) resultado[4]);
+                equipoTipoDTO.setUnidad_medida((String) resultado[5]);
+                equipoTipos.add(equipoTipoDTO);
+
+                vitrinaDTO.setEquipoTipos(equipoTipos);
+            } else {
+                // Si hay múltiples resultados, agrega a la lista existente
+                EquipoTipoDTO equipoTipoDTO = new EquipoTipoDTO();
+                equipoTipoDTO.setCodigo_equipo_tipo((String) resultado[4]);
+                equipoTipoDTO.setUnidad_medida((String) resultado[5]);
+                vitrinaDTO.getEquipoTipos().add(equipoTipoDTO);
+            }
+        }
+
+        return vitrinaDTO;
+    }
+
+
 }

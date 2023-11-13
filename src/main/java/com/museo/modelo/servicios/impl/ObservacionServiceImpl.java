@@ -54,7 +54,12 @@ public class ObservacionServiceImpl implements ObservacionService {
 
     @Override
     public void eliminarObservacion(long id) {
-        observacionRepository.deleteById(id);
+
+        Observacion observacion = observacionRepository.findById(id).orElse(null);
+        
+        observacionBienPatrimonialRepository.deleteByObservacion(observacion);
+        observacionVitrinaRepository.deleteByObservacion(observacion);
+        observacionRepository.delete(observacion);
     }
     
     @Override

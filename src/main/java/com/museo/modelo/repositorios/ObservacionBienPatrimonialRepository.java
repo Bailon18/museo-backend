@@ -1,6 +1,9 @@
 package com.museo.modelo.repositorios;
 
+import com.museo.modelo.entidades.Observacion;
 import com.museo.modelo.entidades.ObservacionBienPatrimonial;
+
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 
@@ -16,4 +19,7 @@ public interface ObservacionBienPatrimonialRepository extends JpaRepository<Obse
             "WHERE observacion_id = :idObservacion",
             nativeQuery = true)
 	List<ObservacionBienPatrimonial> listadoOBPxObservacion(@Param("idObservacion") Long idObservacion);
+	
+    @Transactional
+    void deleteByObservacion(Observacion observacion);
 }
