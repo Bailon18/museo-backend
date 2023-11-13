@@ -1,10 +1,11 @@
 package com.museo.modelo.entidades;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.security.Timestamp;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -16,6 +17,7 @@ import jakarta.persistence.ManyToOne;
 public class CondicionesAmbientalesMonitoreo {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String codigo_condicion;

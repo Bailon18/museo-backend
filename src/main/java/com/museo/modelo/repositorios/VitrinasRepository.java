@@ -24,9 +24,4 @@ public interface VitrinasRepository extends JpaRepository<Vitrinas, Long> {
 
 
 
-
-
-
-
-
 }
