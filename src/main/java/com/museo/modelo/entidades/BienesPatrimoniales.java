@@ -1,7 +1,11 @@
 package com.museo.modelo.entidades;
 
 import jakarta.persistence.*;
+
+import java.sql.Timestamp;
 import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "bienespatrimoniales")
@@ -31,7 +35,8 @@ public class BienesPatrimoniales {
 
 	private String correo;
 
-	private Date fechaRegistro;
+	@CreationTimestamp
+	private Timestamp fechaRegistro;
 
 	@ManyToOne
 	private Cultura cultura;
@@ -146,11 +151,11 @@ public class BienesPatrimoniales {
 		this.correo = correo;
 	}
 
-	public Date getFechaRegistro() {
+	public Timestamp getFechaRegistro() {
 		return fechaRegistro;
 	}
 
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 

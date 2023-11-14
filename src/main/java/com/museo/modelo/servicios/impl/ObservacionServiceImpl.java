@@ -32,10 +32,20 @@ public class ObservacionServiceImpl implements ObservacionService {
 
     @Override
     public Observacion guardarObservacion(Observacion observacion) {
-        Observacion nuevaObservacion = observacionRepository.save(observacion);
-        String formatoCodigo = "O-VIT" + String.format("%05d", nuevaObservacion.getId());
-        nuevaObservacion.setCodigoObservacion(formatoCodigo);
-        return observacionRepository.save(nuevaObservacion);
+
+        if (observacion.getId() > 0) {
+            return observacion;
+        } else {
+            // Si no tiene ID, se guarda por primera vez para obtener su ID
+            Observacion nuevaObservacion = observacionRepository.save(observacion);
+
+            // Generar el código de observación utilizando el ID obtenido
+            String formatoCodigo = "O-VIT" + String.format("%05d", nuevaObservacion.getId());
+            nuevaObservacion.setCodigoObservacion(formatoCodigo);
+
+            // Guardar la observación con el código generado
+            return observacionRepository.save(nuevaObservacion);
+        }
     }
 
     @Override
