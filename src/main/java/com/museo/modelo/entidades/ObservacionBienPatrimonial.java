@@ -7,13 +7,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.ManyToOne;
 
 

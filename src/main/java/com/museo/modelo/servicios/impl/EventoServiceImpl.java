@@ -16,6 +16,9 @@ public class EventoServiceImpl implements EventoService {
 
     @Override
     public Evento crearEvento(Evento evento) {
+        evento = eventoRepository.save(evento);
+        String nuevoCodigo = "EV-PRI" + String.format("%06d", evento.getId());
+        evento.setCodigoEventos(nuevoCodigo);
         return eventoRepository.save(evento);
     }
 
@@ -44,7 +47,7 @@ public class EventoServiceImpl implements EventoService {
     private DetallesEventoBienesPatrimonialesDTO transformarResultado(Object result) {
   
         if (result == null) {
-            return null; // o lanza una excepción según tu lógica de manejo de errores
+            return null; 
         }
 
         Object[] row = (Object[]) result;
@@ -53,9 +56,22 @@ public class EventoServiceImpl implements EventoService {
 
         dto.setNombreUbicacion((String) row[0]);
         dto.setNombreNivelPiso((String) row[1]);
-        dto.setRni((String) row[2]);
-      
+        dto.setRni((String) row[2]);        
+        dto.setNombreCategoria((String) row[3]);        
+        dto.setNombreColeccion((String) row[4]);
+        dto.setNombreCultura((String) row[5]);
+        dto.setNombreEstadoConservacion((String) row[6]);
+        dto.setTipoMaterial((String) row[7]);
+        dto.setDenominacion((String) row[8]);
+        dto.setTematica((String) row[9]);
+        dto.setCodigoBienPatrimonial((String) row[10]);
+        dto.setNombreAnomalia((String) row[11]);
+        dto.setNombreTipoAnomalia((String) row[12]);
+        dto.setNombreGravedad((String) row[13]);
+        dto.setNombreResultado((String) row[14]);        
+        //dto.setDenominacion((String) row[15]);
 
+        
         return dto;
     }
 }

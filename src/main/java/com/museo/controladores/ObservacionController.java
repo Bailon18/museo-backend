@@ -14,7 +14,6 @@ import com.museo.modelo.servicios.ObservacionVitrinaService;
 import com.museo.util.CrearObservacionRequest;
 import com.museo.util.ObservacionDetalleDTO;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController

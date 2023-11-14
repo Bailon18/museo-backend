@@ -3,9 +3,8 @@ package com.museo.modelo.entidades;
 
 
 import jakarta.persistence.*;
-
 import java.sql.Timestamp;
-import java.util.Date;
+
 
 import org.hibernate.annotations.CreationTimestamp;
 

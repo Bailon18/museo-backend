@@ -10,7 +10,6 @@ import com.museo.util.EquipoTipoDTO;
 import com.museo.util.VitrinaDTO;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
