@@ -78,7 +78,6 @@ public class BienesPatrimonialesServiceImpl implements BienesPatrimonialesServic
             existente.setColeccion(bienesPatrimoniales.getColeccion());
             existente.setNivelpiso(bienesPatrimoniales.getNivelpiso());
             existente.setRni(bienesPatrimoniales.getRni());
-            existente.setFechaRegistro(bienesPatrimoniales.getFechaRegistro());
             existente.setEstadoConservacion(bienesPatrimoniales.getEstadoConservacion());
 
             // Luego, guarda la entidad actualizada
@@ -87,6 +86,11 @@ public class BienesPatrimonialesServiceImpl implements BienesPatrimonialesServic
             // Manejo de error si no se encuentra el elemento a actualizar
             throw new RuntimeException("No se encontró el bien patrimonial con ID " + id);
         }
+    }
+    
+    @Override
+    public List<Object[]> listarIdYCodigoBienPatrimonial() {
+        return bienesPatrimonialesRepository.findIdAndCodigoBienPatrimonial();
     }
 
 }

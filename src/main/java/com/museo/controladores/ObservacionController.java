@@ -46,7 +46,6 @@ public class ObservacionController {
 
 	    for (ObservacionBienPatrimonial observacionesBP : request.getListaObservacionBienPatrimonial()) {
 	    	observacionesBP.setObservacion(observacion);
-	    	observacionesBP.setFechaRegistro(new Date());
 	        observacionBienPatrimonialService.guardarObservacionBienPatrimonial(observacionesBP);	        
 	    }
 

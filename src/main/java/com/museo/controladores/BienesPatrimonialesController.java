@@ -87,4 +87,9 @@ public class BienesPatrimonialesController {
         return bienesPatrimonialesService.actualizarBienesPatrimoniales(id, bienesPatrimoniales);
     }
     
+    @GetMapping("/listar-id-codigo")
+    public List<Object[]> listarIdYCodigoBienPatrimonial() {
+        return bienesPatrimonialesService.listarIdYCodigoBienPatrimonial();
+    }
+    
 }

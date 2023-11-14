@@ -23,5 +23,6 @@ public interface BienesPatrimonialesRepository extends JpaRepository<BienesPatri
 	                                                    @Param("categoria") Long categoria);
 
 
-
+    @Query("SELECT bp.id, bp.codigoBienPatrimonial FROM BienesPatrimoniales bp")
+    List<Object[]> findIdAndCodigoBienPatrimonial();
 }

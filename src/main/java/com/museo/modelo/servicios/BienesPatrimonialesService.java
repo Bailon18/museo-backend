@@ -11,4 +11,5 @@ public interface BienesPatrimonialesService {
     List<BienesPatrimoniales> buscarBienesPorCondiciones(long ubicacion, long ambiente, long nivelpiso, long categoria);
     boolean eliminarBienesPatrimoniales(long id);
     BienesPatrimoniales actualizarBienesPatrimoniales(long id, BienesPatrimoniales bienesPatrimoniales);
+    List<Object[]> listarIdYCodigoBienPatrimonial();
 }

@@ -6,8 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -41,8 +43,9 @@ public class ObservacionBienPatrimonial {
     @ManyToOne
     private Aprobacion aprobacion;
 
-    @Temporal(TemporalType.DATE)
-    private Date fechaRegistro;
+	@CreationTimestamp
+	private Timestamp fechaRegistro;
+
 
     @ManyToOne
     private Observacion observacion;
@@ -109,11 +112,11 @@ public class ObservacionBienPatrimonial {
 		this.aprobacion = aprobacion;
 	}
 
-	public Date getFechaRegistro() {
+	public Timestamp getFechaRegistro() {
 		return fechaRegistro;
 	}
 
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 

@@ -2,6 +2,8 @@ package com.museo.controladores;
 
 import com.museo.modelo.entidades.CondicionesAmbientalesMonitoreo;
 import com.museo.modelo.servicios.CondicionesAmbientalesMonitoreoService;
+import com.museo.util.CondicionesAmbientalesDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +26,12 @@ public class CondicionesAmbientalesMonitoreoController {
         return new ResponseEntity<>(nuevoRegistro, HttpStatus.CREATED);
     }
 
-	@GetMapping
+	/*@GetMapping
 	public ResponseEntity<List<CondicionesAmbientalesMonitoreo>> obtenerTodosCondicionesAmbientalesMonitoreo() {
 		List<CondicionesAmbientalesMonitoreo> condicionesAmbientalesMonitoreoList = condicionesAmbientalesMonitoreoService
 				.obtenerTodosCondicionesAmbientalesMonitoreo();
 		return new ResponseEntity<>(condicionesAmbientalesMonitoreoList, HttpStatus.OK);
-	}
+	}*/
 
     @GetMapping("/{id}")
     public ResponseEntity<CondicionesAmbientalesMonitoreo> obtenerPorId(@PathVariable Long id) {
@@ -42,5 +44,10 @@ public class CondicionesAmbientalesMonitoreoController {
     public ResponseEntity<Void> eliminarCondicionesAmbientalesMonitoreo(@PathVariable Long id) {
         condicionesAmbientalesMonitoreoService.eliminarCondicionesAmbientalesMonitoreo(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    
+    @GetMapping
+    public List<CondicionesAmbientalesDTO> obtenerCondicionesDTO() {
+        return condicionesAmbientalesMonitoreoService.obtenerCondicionesDTO();
     }
 }
