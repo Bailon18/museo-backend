@@ -39,7 +39,6 @@ public class ObservacionController {
 	    Observacion observacion = observacionService.guardarObservacion(ob);
 	    
 	    ObservacionVitrina  observacionVitrina =  request.getObservacionVitrina();
-	    observacionVitrina.setFechaRegistro(new Date());
 	    observacionVitrina.setObservacion(observacion);
 	    
 	    observacionvitrinaService.guardarObservacionVitrina(observacionVitrina);

@@ -4,7 +4,10 @@ package com.museo.modelo.entidades;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
 import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "observacionvitrina")
@@ -30,8 +33,9 @@ public class ObservacionVitrina {
     @ManyToOne
     private Resultado resultado;
 
-    @Temporal(TemporalType.DATE)
-    private Date fechaRegistro;
+	@CreationTimestamp
+	private Timestamp fechaRegistro;
+
 
     @ManyToOne
     private Observacion observacion;
@@ -90,11 +94,11 @@ public class ObservacionVitrina {
 		this.resultado = resultado;
 	}
 
-	public Date getFechaRegistro() {
+	public Timestamp getFechaRegistro() {
 		return fechaRegistro;
 	}
 
-	public void setFechaRegistro(Date fechaRegistro) {
+	public void setFechaRegistro(Timestamp fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 
