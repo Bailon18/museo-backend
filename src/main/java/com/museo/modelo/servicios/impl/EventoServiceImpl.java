@@ -1,10 +1,15 @@
 package com.museo.modelo.servicios.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.museo.modelo.entidades.BienesPatrimoniales;
 import com.museo.modelo.entidades.Evento;
+import com.museo.modelo.entidades.ObservacionBienPatrimonial;
 import com.museo.modelo.repositorios.EventoRepository;
+import com.museo.modelo.repositorios.ObservacionBienPatrimonialRepository;
 import com.museo.modelo.servicios.EventoService;
 import com.museo.util.DetallesEventoBienesPatrimonialesDTO;
 
@@ -14,6 +19,9 @@ public class EventoServiceImpl implements EventoService {
 	@Autowired
     private EventoRepository eventoRepository;
 
+    @Autowired
+    private ObservacionBienPatrimonialRepository observacionBienPatrimonialRepository;
+
     @Override
     public Evento crearEvento(Evento evento) {
         evento = eventoRepository.save(evento);
@@ -21,6 +29,60 @@ public class EventoServiceImpl implements EventoService {
         evento.setCodigoEventos(nuevoCodigo);
         return eventoRepository.save(evento);
     }
+
+    // @Override
+    // public Evento crearEvento(Evento evento) {
+    //     BienesPatrimoniales bienesPatrimoniales = evento.getPatrimonio();
+    //     if (bienesPatrimoniales != null) { 
+    //         ObservacionBienPatrimonial ob = observacionBienPatrimonialRepository.findLatestObservacionByBienPatrimonialId(evento.getPatrimonio().getId()).get()
+    //         String nivelGravedad =  ob.getGravedad().getDescripcion();
+    //         String prioridad = asignarPrioridadSegunNivelGravedad(nivelGravedad);
+
+    //         if (!nivelGravedad.equals("Grave")) {
+    //             List<Evento> eventosProximos = eventoRepository.findModeradoLeveOrderByFechaEvento();
+    //             if (!eventosProximos.isEmpty()) {
+    //                 // El primer evento en la lista será el próximo moderado o leve más cercano en el tiempo
+    //                 Evento proximoEvento = eventosProximos.get(0);
+    //                 if (proximoEvento.equals(evento)) {
+    //                     evento.setPrioridad(prioridad);
+    //                 } else {
+    //                     // El evento actual no es el más próximo, se asigna Baja
+    //                     evento.setPrioridad("Baja");
+    //                 }
+    //             } else {
+    //                 // No hay eventos moderados o leves futuros, se asigna la prioridad según nivelGravedad
+    //                 evento.setPrioridad(prioridad);
+    //             }
+    //         } else {
+    //             evento.setPrioridad(prioridad);
+    //         }
+    //     }
+
+    //     evento = eventoRepository.save(evento);
+    //     String nuevoCodigo = "EV-PRI" + String.format("%06d", evento.getId());
+    //     evento.setCodigoEventos(nuevoCodigo);
+
+    //     return eventoRepository.save(evento);
+    // }
+
+
+    private String asignarPrioridadSegunNivelGravedad(String nivelGravedad) {
+        String prioridad;
+        switch (nivelGravedad) {
+            case "Grave":
+                prioridad = "Alta";
+                break;
+            case "Moderado":
+                prioridad = "Media";
+                break;
+            case "Leve":
+            default:
+                prioridad = "Baja";
+                break;
+        }
+        return prioridad;
+    }
+
 
     @Override
     public Evento actualizarEvento(Evento evento) {

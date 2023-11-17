@@ -30,6 +30,11 @@ public class Evento {
 
 	private String lugar;
 
+	private String departamento;	
+	
+	private String prioridad;
+
+
 	@ManyToOne
 	private BienesPatrimoniales patrimonio;
 
@@ -111,4 +116,21 @@ public class Evento {
 		this.observacion = observacion;
 	}
 
+	public String getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
+
+	public String getPrioridad() {
+		return prioridad;
+	}
+
+	public void setPrioridad(String prioridad) {
+		this.prioridad = prioridad;
+	}
+
+	
 }

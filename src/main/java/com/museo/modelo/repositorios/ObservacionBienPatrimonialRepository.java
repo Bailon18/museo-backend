@@ -6,6 +6,7 @@ import com.museo.modelo.entidades.ObservacionBienPatrimonial;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,9 @@ public interface ObservacionBienPatrimonialRepository extends JpaRepository<Obse
 	
     @Transactional
     void deleteByObservacion(Observacion observacion);
+
+    @Query(value = "SELECT * FROM observacionbienpatrimonial " +
+                   "WHERE bien_patrimonial_id = :bienPatrimonialId " +
+                   "ORDER BY fecha_registro DESC LIMIT 1", nativeQuery = true)
+    Optional<ObservacionBienPatrimonial> findLatestObservacionByBienPatrimonialId(long bienPatrimonialId);
 }
