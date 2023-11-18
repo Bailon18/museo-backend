@@ -11,6 +11,7 @@ import com.museo.util.DetallesEventoBienesPatrimonialesDTO;
 
 @RestController
 @RequestMapping("/eventos")
+@CrossOrigin(origins = { "*" })
 public class EventoController {
 
     @Autowired
