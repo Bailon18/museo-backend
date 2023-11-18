@@ -2,6 +2,7 @@ package com.museo.modelo.servicios.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -109,4 +110,9 @@ public class EventoServiceImpl implements EventoService {
     public List<Object> obtenerEventosPorPrioridad() {
         return eventoRepository.obtenerEventosPrioridad();
     }
+
+	@Override
+	public Optional<Evento> buscarPorId(Long id) {
+		 return eventoRepository.findById(id);
+	}
 }

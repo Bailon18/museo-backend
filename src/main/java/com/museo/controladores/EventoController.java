@@ -1,6 +1,7 @@
 package com.museo.controladores;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,5 +58,12 @@ public class EventoController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Evento> buscarEventoPorId(@PathVariable Long id) {
+        Optional<Evento> eventoOptional = eventoService.buscarPorId(id);
+        return eventoOptional.map(evento -> new ResponseEntity<>(evento, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

@@ -35,7 +35,6 @@ public class Evento {
 	private String prioridad;
 
 	
-
 	@ManyToOne
 	private BienesPatrimoniales patrimonio;
 
