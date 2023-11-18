@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -35,32 +36,42 @@ public class EquipoTipoController {
     }
     
 
- 
-    @Operation(summary = "Tiene que enviar 3 objectos de EquipoTipo || Funciona para AGREGAR(Sin Id) O ACTUALIZAR( enviar con ID")
+
+    @Operation(summary = "Tiene que enviar 3 objectos de EquipoTipo || Funciona para AGREGAR(id = 0) O ACTUALIZAR(  id = ?)")
     @PostMapping("/")
-    public List<EquipoTipo> crearEquiposTipos(
-        @RequestBody List<EquipoTipo> equiposTipos // pero no se supone 
-        ) {
-        
-        Equipos equipos = new Equipos(); // Crea un nuevo objeto Equipos
-        Equipos equipogrupo = equipoService.crearEquipo(equipos); // Crea el objeto Equipos
-        
+    public List<EquipoTipo> crearOActualizarEquiposTipos(@RequestBody List<EquipoTipo> equiposTipos) {
+        List<EquipoTipo> resultados = new ArrayList<>();
+
+        Equipos equipos = null;
 
         for (EquipoTipo equipoTipo : equiposTipos) {
-            equipoTipo.setEquipos(equipogrupo); // Asocia el equipo a la entidad Equipos
-            equipoTipoService.crearEquipoTipo(equipoTipo); // Crea cada objeto EquipoTipo
+            Long id = equipoTipo.getId();
+
+            if (id > 0) {
+
+                EquipoTipo equipoTipoActualizado = equipoTipoService.actualizarEquipoTipo(id, equipoTipo);
+                resultados.add(equipoTipoActualizado);
+            } else {
+  
+                if (equipos == null) {
+                    equipos = new Equipos();
+                    Equipos equipogrupo = equipoService.crearEquipo(equipos);
+                }
+                
+                equipoTipo.setEquipos(equipos); 
+                EquipoTipo nuevoEquipoTipo = equipoTipoService.crearEquipoTipo(equipoTipo);
+                resultados.add(nuevoEquipoTipo);
+            }
         }
         
-        return equiposTipos;
+        return resultados;
     }
 
-
-    /*@PutMapping("/{id}")
-    public EquipoTipo actualizarEquipoTipo(@PathVariable Long id, @RequestBody EquipoTipo equipoTipo) {
-        return equipoTipoService.actualizarEquipoTipo(id, equipoTipo);
-    }*/
-
     
+    
+    
+
+
     @Operation(summary = "Eliminar equipo")
     @DeleteMapping("/{id}")
     public void eliminarEquipoTipo(@PathVariable Long id) {

@@ -54,7 +54,24 @@ public class EquipoTipoServiceImpl implements EquipoTipoService {
     }
 
 
-
+    // public EquipoTipo actualizarEquipoTipo(EquipoTipo equipoTipo) {
+    //     // Aquí necesitarás lógica para verificar si el EquipoTipo a actualizar existe en la base de datos.
+    //     // Por ejemplo:
+    //     EquipoTipo equipoExistente = equipoTipoRepository.findById(equipoTipo.getId()).orElse(null);
+        
+    //     if (equipoExistente != null) {
+    //         // Realiza la actualización
+    //         // Actualiza los campos necesarios de 'equipoExistente' con los valores de 'equipoTipo'
+    //         equipoExistente.setCodigoEquipoTipo(equipoTipo.getCodigoEquipoTipo());
+    //         // Otros campos...
+            
+    //         return equipoTipoRepository.save(equipoExistente);
+    //     } else {
+    //         // Manejo de error si no se encuentra el objeto a actualizar
+    //         return null;
+    //     }
+    // }
+    
 
     @Override
     public EquipoTipo actualizarEquipoTipo(Long id, EquipoTipo equipoTipo) {
