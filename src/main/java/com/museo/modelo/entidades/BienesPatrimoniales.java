@@ -206,6 +206,17 @@ public class BienesPatrimoniales {
 		this.nivelpiso = nivelpiso;
 	}
 
+	@Override
+	public String toString() {
+		return "BienesPatrimoniales [id=" + id + ", codigoBienPatrimonial=" + codigoBienPatrimonial + ", rni=" + rni
+				+ ", tipoMaterial=" + tipoMaterial + ", denominacion=" + denominacion + ", tematica=" + tematica
+				+ ", descripcion=" + descripcion + ", detalleConservacion=" + detalleConservacion + ", tratamiento="
+				+ tratamiento + ", responsable=" + responsable + ", correo=" + correo + ", fechaRegistro="
+				+ fechaRegistro + ", cultura=" + cultura + ", ubicacion=" + ubicacion + ", categoria=" + categoria
+				+ ", coleccion=" + coleccion + ", nivelpiso=" + nivelpiso + ", estadoConservacion=" + estadoConservacion
+				+ ", vitrina=" + vitrina + "]";
+	}
+
 
 	
 	

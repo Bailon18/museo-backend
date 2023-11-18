@@ -28,12 +28,16 @@ public class BienesPatrimonialesServiceImpl implements BienesPatrimonialesServic
         return bienesPatrimonialesRepository.findById(id).orElse(null);
     }
 
+
     public BienesPatrimoniales crearBienesPatrimoniales(BienesPatrimoniales bienesPatrimoniales) {
         bienesPatrimoniales = bienesPatrimonialesRepository.save(bienesPatrimoniales);
+        System.out.println("BIEN " + bienesPatrimoniales);
         String nuevoCodigo = "CC" + String.format("%06d", bienesPatrimoniales.getId());
         bienesPatrimoniales.setCodigoBienPatrimonial(nuevoCodigo);
+        System.out.println("BIEN2 " + bienesPatrimoniales);
         return bienesPatrimonialesRepository.save(bienesPatrimoniales);
     }
+
     
     @Override
     public List<BienesPatrimoniales> buscarBienesPorCondiciones(long ubicacion, long ambiente, long nivelpiso, long categoria) {

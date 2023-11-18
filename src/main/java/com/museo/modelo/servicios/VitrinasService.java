@@ -10,6 +10,6 @@ public interface VitrinasService {
     List<Vitrinas> obtenerTodasLasVitrinas();
     Vitrinas obtenerVitrinaPorId(Long id);
     Vitrinas guardarVitrina(Vitrinas vitrina);
-    void eliminarVitrina(Long id);
+    boolean eliminarVitrina(Long id);
     VitrinaDTO obtenerDatosPorCodigoVitrina(String codigoVitrina);
 }

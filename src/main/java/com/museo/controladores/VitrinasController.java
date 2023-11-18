@@ -1,6 +1,7 @@
 package com.museo.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,10 +36,23 @@ public class VitrinasController {
         return vitrinasService.guardarVitrina(vitrina);
     }
 
+
     @DeleteMapping("/{id}")
-    public void eliminarVitrina(@PathVariable Long id) {
-        vitrinasService.eliminarVitrina(id);
+    public ResponseEntity<String> eliminarVitrina(@PathVariable long id) {
+        try {
+            boolean eliminado = vitrinasService.eliminarVitrina(id);
+            if (eliminado) {
+                return new ResponseEntity<>("Eliminado exitosamente", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Recurso no encontrado", HttpStatus.NOT_FOUND);
+            }
+        } catch (DataIntegrityViolationException ex) {
+            return new ResponseEntity<>("Error: No se puede eliminar debido a una restricción de clave externa", HttpStatus.CONFLICT);
+        } catch (Exception ex) {
+            return new ResponseEntity<>("Error al eliminar el recurso", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
     
     @GetMapping("/codigoEquipoTipo/{codigoVitrina}")
     public ResponseEntity<VitrinaDTO> obtenerCodigoEquipoTipo(@PathVariable String codigoVitrina) {

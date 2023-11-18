@@ -1,6 +1,8 @@
 package com.museo.modelo.servicios.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.museo.modelo.entidades.Vitrinas;
@@ -40,11 +42,8 @@ public class VitrinasServiceImpl implements VitrinasService {
         return vitrinasRepository.save(vitrina);
     }
 
-    @Override
-    public void eliminarVitrina(Long id) {
-        vitrinasRepository.deleteById(id);
-    }
 
+ 
     public VitrinaDTO obtenerDatosPorCodigoVitrina(String codigoVitrina) {
         List<Object[]> resultados = vitrinasRepository.findDataByCodigoVitrina(codigoVitrina);
 
@@ -76,6 +75,20 @@ public class VitrinasServiceImpl implements VitrinasService {
 
         return vitrinaDTO;
     }
+
+	@Override
+	public boolean eliminarVitrina(Long id) {
+        try {
+        	vitrinasRepository.deleteById(id);
+            return true; // Retorna true cuando se elimina correctamente
+        } catch (EmptyResultDataAccessException ex) {
+            return false; // Retorna false cuando el recurso no se encuentra
+        } catch (DataIntegrityViolationException ex) {
+            throw ex; // Lanza la excepción cuando hay una restricción de clave externa
+        } catch (Exception ex) {
+            return false; // Retorna false en caso de otros errores
+        }
+	}
 
 
 }
