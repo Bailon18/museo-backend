@@ -69,10 +69,7 @@ public class EquipoTipoController {
 
     
     
-    
-
-
-    @Operation(summary = "Eliminar equipo")
+    @Operation(summary = "Si quieres eliminar apunta  a este enpoint: http://museo-backend-production.up.railway.app/api/equipos/idDELCONTENEDOR ")
     @DeleteMapping("/{id}")
     public void eliminarEquipoTipo(@PathVariable Long id) {
         equipoTipoService.eliminarEquipoTipo(id);

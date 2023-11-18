@@ -63,7 +63,11 @@ public class BienesPatrimonialesServiceImpl implements BienesPatrimonialesServic
         if (optionalBienesPatrimoniales.isPresent()) {
             BienesPatrimoniales existente = optionalBienesPatrimoniales.get();
             
+            System.out.println("BIENESS PATRO: "+ existente.getId());
+            
             // Aquí actualizas solo los campos necesarios
+            
+            existente.setId(bienesPatrimoniales.getId());
             existente.setTipoMaterial(bienesPatrimoniales.getTipoMaterial());
             existente.setDenominacion(bienesPatrimoniales.getDenominacion());
             existente.setTematica(bienesPatrimoniales.getTematica());
