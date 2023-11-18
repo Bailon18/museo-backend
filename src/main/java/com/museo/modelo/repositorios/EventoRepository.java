@@ -55,6 +55,7 @@ public interface EventoRepository extends JpaRepository<Evento, Long> {
             "    e.id AS id, " +
             "    e.codigo_eventos AS codigo_patrimonial, " +
             "    te.descripcion AS tipo_evento, " +
+            "    bp.codigo_bien_patrimonial AS codigo_bien_patrimonial, " +
             "    r.descripcion AS resultado, " +
             "    e.prioridad AS Prioridad, " +
             "    e.fecha_evento AS fecha_devento, " +
@@ -68,6 +69,8 @@ public interface EventoRepository extends JpaRepository<Evento, Long> {
             "    observacionbienpatrimonial obp ON e.patrimonio_id = obp.bien_patrimonial_id " +
             "INNER JOIN " +
             "    resultado r ON obp.resultado_id = r.id " +
+            "LEFT JOIN " +
+            "    bienespatrimoniales bp ON e.patrimonio_id = bp.id " +
             ") AS subquery " +
             "WHERE rn = 1 " +
             "ORDER BY " +
@@ -78,5 +81,6 @@ public interface EventoRepository extends JpaRepository<Evento, Long> {
             "        ELSE 4 " +
             "    END", nativeQuery = true)
     List<Object> obtenerEventosPrioridad();
+
 	
 }
