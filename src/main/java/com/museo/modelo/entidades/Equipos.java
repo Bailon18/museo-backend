@@ -14,9 +14,9 @@ public class Equipos {
 
     private String codigoEquipo;
     
-    @OneToMany(mappedBy = "equipos")
+    @OneToMany(mappedBy = "equipos", cascade = CascadeType.ALL)
     private List<EquipoTipo> equipoTipos;
-    
+
     private boolean estado ;
 	
 	public Equipos() {

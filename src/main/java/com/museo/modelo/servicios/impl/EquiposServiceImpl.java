@@ -18,50 +18,44 @@ import java.util.NoSuchElementException;
 @Service
 public class EquiposServiceImpl implements EquiposService {
 
-    @Autowired
-    private EquiposRepository equiposRepository;
-    
-    @Autowired
-    private EquipoTipoRepository equipotipoRepository;
+	@Autowired
+	private EquiposRepository equiposRepository;
 
-    @Override
-    public List<Equipos> listarEquiposDescendente() {
-        return equiposRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
-    }
+	@Override
+	public List<Equipos> listarEquiposDescendente() {
+		return equiposRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+	}
 
-    @Override
-    public Equipos crearEquipo(Equipos equipo) {
-    	
-        Equipos nuevoEquipo = equiposRepository.save(equipo);
-        // Genera el código de equipo basado en el ID
-        String formatoCodigo = "EG-" + String.format("%05d", nuevoEquipo.getId());
-        
-        nuevoEquipo.setCodigoEquipo(formatoCodigo);
-        return equiposRepository.save(nuevoEquipo);
-    }
+	@Override
+	public Equipos crearEquipo(Equipos equipo) {
 
+		Equipos nuevoEquipo = equiposRepository.save(equipo);
+		// Genera el código de equipo basado en el ID
+		String formatoCodigo = "EG-" + String.format("%05d", nuevoEquipo.getId());
 
-    @Override
-    public Equipos obtenerEquipoPorId(Long id) {
-        return equiposRepository.findById(id)
-            .orElseThrow(() -> new NoSuchElementException("Equipo no encontrado"));
-    }
+		nuevoEquipo.setCodigoEquipo(formatoCodigo);
+		return equiposRepository.save(nuevoEquipo);
+	}
 
-    @Override
-    @Transactional
-    public boolean eliminarEquipo(Long id) {
+	@Override
+	public Equipos obtenerEquipoPorId(Long id) {
+		return equiposRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Equipo no encontrado"));
+	}
 
-        try {
-            equipotipoRepository.deleteByEquiposId(id);
-            equiposRepository.deleteById(id);
-            return true; // Retorna true cuando se elimina correctamente
-        } catch (EmptyResultDataAccessException ex) {
-            return false; // Retorna false cuando el recurso no se encuentra
-        } catch (DataIntegrityViolationException ex) {
-            throw ex; // Lanza la excepción cuando hay una restricción de clave externa
-        } catch (Exception ex) {
-            return false; // Retorna false en caso de otros errores
-        }
-    }
-    
+	@Override
+	@Transactional
+	public boolean eliminarEquipo(Long id) {
+
+		try {
+			equiposRepository.deleteById(id);
+			return true; // Retorna true cuando se elimina correctamente
+		} catch (EmptyResultDataAccessException ex) {
+			return false; // Retorna false cuando el recurso no se encuentra
+		} catch (DataIntegrityViolationException ex) {
+			throw ex; // Lanza la excepción cuando hay una restricción de clave externa
+		} catch (Exception ex) {
+			return false; // Retorna false en caso de otros errores
+		}
+	}
+
 }
