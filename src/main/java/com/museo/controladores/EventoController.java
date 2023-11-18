@@ -1,5 +1,7 @@
 package com.museo.controladores;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,14 @@ public class EventoController {
         return new ResponseEntity<>(nuevoEvento, HttpStatus.CREATED);
     }
 
+    
+    @GetMapping("/prioridad")
+    public ResponseEntity<List<Object>> obtenerEventosPorPrioridad() {
+        List<Object> eventos = eventoService.obtenerEventosPorPrioridad();
+        return new ResponseEntity<>(eventos, HttpStatus.OK);
+    }
+    
+    
     @PutMapping
     public ResponseEntity<Evento> actualizarEvento(@RequestBody Evento evento) {
         Evento eventoActualizado = eventoService.actualizarEvento(evento);

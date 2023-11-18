@@ -104,4 +104,9 @@ public class EventoServiceImpl implements EventoService {
         
         return dto;
     }
+    
+    @Override
+    public List<Object> obtenerEventosPorPrioridad() {
+        return eventoRepository.obtenerEventosPrioridad();
+    }
 }
